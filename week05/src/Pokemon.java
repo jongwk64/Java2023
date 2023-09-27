@@ -8,6 +8,9 @@ public abstract class Pokemon {
     protected int defenceRate;
     private static int pokemonCount = 0;  // 클래스(정적) 변수
 
+    protected String[] skills;
+    protected int[] specialAttackRate;
+
     Flyable flyable;  // 연관 관계
 
     public void setFlyable(Flyable flyable) {  // upcast
