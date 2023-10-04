@@ -1,9 +1,11 @@
+package Pokemonster;
+
 public class Charizard extends Pokemon{
     public Charizard(Flyable f) {
         System.out.println("자몽자몽~");
         this.level = 36;
-        //this.attackRate = 84; // 2단계 진화한 포켓몬스터의 경우 최대 공격력과 최소 공격력의 차를 10으로 두고 랜덤 출력
-        this.attackRate = (int)(Math.random() * 11 ) + 74; // 74 ~ 84
+        //this.attackRate = 84;  // 2단계 진화 포켓몬스터의 경우 최대 공격력과 최소 공격력의 차를 10으로 두고 랜덤 추출
+        this.attackRate = (int)(Math.random() * 11) + 74;  // 74 ~ 84
         this.defenceRate = 78;
 //      this.setLevel(36);
         this.setHp(78);
