@@ -11,7 +11,7 @@ public class Squirtle extends Pokemon{
         this.level = 1;
         //this.attackRate = 48;  // 0단계 진화 포켓몬스터의 경우 최대 공격력과 최소 공격력의 차를 3으로 두고 랜덤 추출
         this.attackRate = (int)(Math.random() * 4) + 45;  // 45 ~ 48
-        this.defenceRate = 65;
+        this.defenceRate = 110;
         this.setHp(44);
         this.name = "꼬부기";
         this.flyable = f; // Association, has-a (Aggregation)
@@ -27,8 +27,8 @@ public class Squirtle extends Pokemon{
 //        this.specialAttackRate.add(50);
 //        this.specialAttackRate.add(60);
 
-        this.skills = new ArrayList<>(Arrays.asList("물대포", "하이드로펌프", "껍질에숨기"));
-        this.specialAttackRate = new ArrayList<>(Arrays.asList(40, 110, -80));
+        this.skills = new ArrayList<>(Arrays.asList("물대포", "물의 파동", "껍질에숨기","하이드로 펌프"));
+        this.specialAttackRate = new ArrayList<>(Arrays.asList(40, 60, -80, 110));
     }
 
     @Override
