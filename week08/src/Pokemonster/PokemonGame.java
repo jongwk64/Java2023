@@ -12,24 +12,24 @@ public class PokemonGame {
 
         // 적군 포켓몬스터 랜덤 생성
         Pokemon enemy = null;
-        int enemyPick = (int)(Math.random()*3);
-        if(enemyPick == 0){
+        int enemyPick = (int) (Math.random() * 3);
+        if (enemyPick == 0) {
             NoFly noFly = new NoFly();
             enemy = new Pikachu(noFly);
-        }else if(enemyPick == 1){
+        } else if (enemyPick == 1) {
             NoFly noFly = new NoFly();
             enemy = new Squirtle(noFly);
-        }else if(enemyPick == 2){
+        } else if (enemyPick == 2) {
             Wings wings = new Wings();
             enemy = new Charizard(wings);
-        }else{
+        } else {
             System.out.println("여기는 영원히 실행 안됩니다");
         }
 
         // 플레이어 포켓몬스터 선택
         // Pokemonster.Pokemon player = new Pokemonster.Pokemon();  // 추상클래스의 객체는 생성 불가
 
-        try{
+        try {
             Pokemon player = null;  // 추상클래스의 변수 선언은 가능 (upcasting 용)
             Scanner scanner = new Scanner(System.in);
             while (true) {
@@ -50,31 +50,38 @@ public class PokemonGame {
             }
 
             int menu, skillMenu;
-            while(true){
+            while (true) {
                 System.out.print("\t1) 전투   2) 도망   3) 종료 : ");
                 menu = scanner.nextInt();
-                if(menu == 1){
+                if (menu == 1) {
                     //System.out.print("전투 기술 1) " + player.skills[0] + "   2) " +  player.skills[1] + "   3) " +  player.skills[2] + " : ");
-                    System.out.print("전투 기술 1) " + player.skills.get(0) + "   2) " +  player.skills.get(1) + "   3) " +  player.skills.get(2) + " : ");
+                    System.out.print("전투 기술 1) " + player.skills.get(0) + "   2) " + player.skills.get(1) + "   3) " + player.skills.get(2) + " : ");
                     skillMenu = scanner.nextInt();
                     //player.attack(enemy, scanner.next());
                     //player.attack(enemy, player.skills[skillMenu-1]);
                     player.attack(enemy, skillMenu);
-                    enemy.attack(player, (int)(Math.random() * 3)+1);
-                }else if(menu == 2){
+                    enemy.attack(player, (int) (Math.random() * 3) + 1);
+                } else if (menu == 2) {
 
-                }else{
+                } else {
                     System.out.println("게임을 종료합니다.");
                     break;
                 }
             } //메뉴가 아닌것이 입력 될때
-        }catch (InputMismatchException err) { //예외 처리 try {} catch{} 사용
+        }
+        catch (InputMismatchException err) { //예외 처리 try {} catch{} 사용
             System.out.println("입력 값은 숫자로 입력하셔야 합니다.");
             System.out.println("예외 내용 : " + err.getMessage());
-        }catch (NullPointerException err) {
+        }
+        catch (NullPointerException err) {
             System.out.println("플래이어 객체가 생성되지 않았습니다.");
             System.out.println("예외 내용 : " + err.getMessage());
-        }catch (Exception err){
+        }
+        catch (IndexOutOfBoundsException err) {
+            System.out.println("존재하지 않는 스킬입니다. 기술 범위를 벗어남.");
+            System.out.println("예외 내용 : " + err.getMessage());
+        }
+        catch (Exception err){
             System.out.println("예외가 발생했습니다.");
             System.out.println("예외 내용 : " + err.getMessage());
         }finally {
