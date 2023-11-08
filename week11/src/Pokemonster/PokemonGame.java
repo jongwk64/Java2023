@@ -5,6 +5,7 @@ import fly.Wings;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.function.UnaryOperator;
 
 public class PokemonGame {
     public static Pokemon enemy = null;
@@ -36,7 +37,7 @@ public class PokemonGame {
 
             int menu, skillMenu;
             while(true){
-                System.out.print("\t1) 전투   2) 도망   3) 종료 : ");
+                System.out.print("\t1) 전투   2) 도망   3) 물약(힐)  4) 종료 : ");
                 menu = scanner.nextInt();
                 if(menu == 1){
                     while(true){
@@ -59,6 +60,12 @@ public class PokemonGame {
                     System.out.println("현재 지역을 탈출합니다~~~");
                     produceEnemy();
                 }else if(menu == 3){
+                    System.out.println("힐링 포션을 마십니다. 체력이 30hp 증가합니다");
+                    UnaryOperator<Integer> healPotion = hp -> hp + 30;
+                    int newHp = healPotion.apply(player.getHp());
+                    player.setHp(newHp);
+                    System.out.println(player.name + "의 체력은" + player.getHp() + "입니다");
+                }else if(menu == 4){
                     System.out.println("게임을 종료합니다.");
                     break;
                 }else{
